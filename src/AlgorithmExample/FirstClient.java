@@ -28,10 +28,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class FirstClient {
 
-	private static final int privateNum = 4;
+	private static final int privateNum = 15;
 
 	public static void main(String[] args) {
-		int myModResult, servModResult, num, mod, secureKey;
+		long myModResult, servModResult, num, mod, secureKey;
 		SecretKeySpec secretKey;
 		String msgToEncrypt;
 
@@ -65,7 +65,7 @@ public class FirstClient {
 
 			servModResult = ioResults(myModResult, in, out);
 
-			secureKey = (int) (Math.pow(servModResult, privateNum)) % mod;
+			secureKey = (long) (Math.pow(servModResult, privateNum)) % mod;
 			System.out.println("Secure key ::  " + secureKey);
 
 			secretKey = generateSecureKey(secureKey);
@@ -107,10 +107,10 @@ public class FirstClient {
 		return encodedString;
 	}
 
-	private static SecretKeySpec generateSecureKey(int secureKey)
+	private static SecretKeySpec generateSecureKey(long secureKey)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		SecretKeySpec secretKey;
-		String secure = Integer.toString(secureKey);
+		String secure = Long.toString(secureKey);
 		MessageDigest sha = null;
 		byte[] key = secure.getBytes("UTF-8");
 		sha = MessageDigest.getInstance("SHA-1");
@@ -120,7 +120,7 @@ public class FirstClient {
 		return secretKey;
 	}
 
-	private static int ioResults(int myModResult, BufferedReader in, PrintWriter out) throws IOException {
+	private static int ioResults(long myModResult, BufferedReader in, PrintWriter out) throws IOException {
 		System.out.print("Sended mod result ::  " + myModResult);
 		System.out.println();
 		out.println(myModResult);

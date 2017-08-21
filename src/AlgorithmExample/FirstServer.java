@@ -19,8 +19,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class FirstServer {
 
-	private static final int privateNum = 3;
-	public static final int PORT = 8080;
+	private static final int privateNum = 13;
+	public static final int PORT = 8090;
 
 	public static void main(String[] args) {
 		int num, mod, secureKey, clientModResult;
