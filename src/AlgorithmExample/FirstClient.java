@@ -31,6 +31,7 @@ public class FirstClient {
 	private static final int privateNum = 15;
 
 	public static void main(String[] args) {
+
 		long myModResult, servModResult, num, mod, secureKey;
 		SecretKeySpec secretKey;
 		String msgToEncrypt;
